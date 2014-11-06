@@ -1,0 +1,15 @@
+<div id="profile" class="span4">
+  <div>
+    <p>
+      <%= image_tag asset_path(@user.avatar.url),
+          width: "100px", height: "130px", alt: "Profile Image" %>
+      <label><%= @user.username %></label>
+    </p>
+    <p><label>Email:</label>
+    <span><%= @user.email %></span></p>
+    <p><label>Created at:</label>
+    <span><%= @user.signed_up_at %></span></p>
+    <p><label>Updated at::</label>
+    <span><%= @user.last_updated_at %></span></p>
+  </div>
+</div>
