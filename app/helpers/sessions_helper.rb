@@ -42,7 +42,7 @@ module SessionsHelper
   def user_auth
     unless user_signed_in?
       flash[:error] = "You must sign in to continue."
-      redirect_to root_path
+      redirect_to sign_in_path
     end
   end
   
@@ -58,6 +58,10 @@ module SessionsHelper
       flash[:error] = "You are already signed in."
       redirect_to root_path
     end
+  end
+
+  def redirect_admin_user_to(path)
+    redirect_to path if admin?
   end
 
   def remember(user)

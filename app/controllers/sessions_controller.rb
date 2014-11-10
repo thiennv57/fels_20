@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in user
       remember user
       flash[:success] = "You have signed in."
-      redirect_to root_path
+      redirect_to admin? ? admin_path : root_path
     else
       flash.now[:error] = "Wrong username or password!"
       render "new"
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     flash[:success] = "You have signed out."
-    redirect_to root_path
+    redirect_to admin? ? admin_path : root_path
   end
 end
