@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110065025) do
+ActiveRecord::Schema.define(version: 20141113063723) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -19,18 +19,21 @@ ActiveRecord::Schema.define(version: 20141110065025) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
   create_table "lesson_words", force: true do |t|
     t.integer  "lesson_id"
     t.integer  "word_id"
     t.integer  "word_answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "lessons", force: true do |t|
     t.integer  "user_id"
     t.integer  "category_id"
-    t.string   "result"
+    t.integer  "result"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141110065025) do
   create_table "word_answers", force: true do |t|
     t.integer  "word_id"
     t.string   "content"
-    t.boolean  "correct"
+    t.boolean  "correct",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

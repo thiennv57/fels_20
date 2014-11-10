@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :users
   get "sign_up" => "users#new", as: :sign_up
   
-  resources :words, except: :show do
-    get "search" => "words#search", on: :collection
-  end
+  resources :categories, except: :show
+
+  resources :words, except: :show
 
   resource :sessions, only: [:new, :create, :destroy]
   get "sign_in" => "sessions#new", as: :sign_in
