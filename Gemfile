@@ -14,6 +14,8 @@ gem 'jbuilder', '2.0'
 gem 'sdoc', '0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bcrypt', '3.1.7'
+gem 'bcrypt-ruby', '3.0.0'
+gem 'carrierwave', '0.10.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

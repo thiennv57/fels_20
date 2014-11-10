@@ -1,0 +1,101 @@
+@import 'bootstrap';
+
+/* top navigation bar */
+#top {
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+#logo {
+  float: left;
+  padding: 10px;
+}
+#top-nav {
+  float: right;
+  list-style: none;
+  margin: 0;
+  margin-top: 20px;
+  li {
+    float: left;
+    padding: 0 10px;
+    padding-top: 20px;
+    font-size: 1.1em;
+  }
+}
+
+/* navigation bar */
+#nav {
+  overflow: hidden;
+}
+#nav-inner {
+  clear: both;
+  list-style: none;
+  li {
+    float: left;
+    padding: 10px;
+    font-size: 1.1em;
+    margin: 0 1px;
+    background-color: #8ce;
+    border-radius: 3px;
+    &:hover {
+      background-color: #0cf;
+    }
+    a {
+      color: #000;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#main {
+  border: 3px solid #0ac;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#error_messages {
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+  li {
+    color: red;
+  }
+}
+
+#profile {
+  border-radius: 5px;
+  border: 3px solid #ddd;
+  div {
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    p {
+      label {
+        width: 35%;
+        display: inline-block;
+      }
+      padding: 0;
+      margin: 0;
+      &:first-child {
+        padding-bottom: 20px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+        label {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+#notification {
+  text-align: center;
+}
+
+.field_with_errors {
+  input {
+    border-color: red; 
+  }
+}
