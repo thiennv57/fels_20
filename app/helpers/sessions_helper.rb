@@ -1,6 +1,14 @@
 module SessionsHelper
   def current_user
-    User.find_by_id session[:user_id]
+    if session[:user_id]
+      @current_user ||= User.find_by_id session[:user_id]
+    elsif cookies.signed[:user_id]
+      user = User.find_by_id cookies.signed[:user_id]
+      if user && user.authenticated?(cookies[:remember_token])
+        sign_in user
+        @current_user = user
+      end
+    end
   end
   
   def user_signed_in?
@@ -9,6 +17,22 @@ module SessionsHelper
   
   def current_user?(id)
     session[:user_id] == id.to_i
+  end
+
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+
+  def forget(user)
+    user.forget
+    cookies.delete :user_id
+    cookies.delete :remember_token
+  end
+
+  def sign_out
+    forget current_user
+    session.delete :user_id
+    @current_user = nil
   end
 
   def user_auth
@@ -30,5 +54,11 @@ module SessionsHelper
       flash[:error] = "You are already signed in."
       redirect_to root_path
     end
+  end
+
+  def remember(user)
+    user.remember
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
   end
 end
