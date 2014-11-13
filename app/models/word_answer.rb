@@ -1,6 +1,8 @@
 class WordAnswer < ActiveRecord::Base
   belongs_to :word
-  belongs_to :lesson_word
+  has_many :lesson_words
   
-  validates_presence_of :content
+  validates_presence_of :content, :word_id
+
+  scope :corrected, -> { where("correct = true").first }
 end

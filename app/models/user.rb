@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :password_not_require
 
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
+  has_many :lesson_words, dependent: :destroy
   
   mount_uploader :avatar, AvatarUploader
   
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, minimum: 6, unless: :password_not_require
   
   has_secure_password
-  
+
   def self.digest(string)
     BCrypt::Password.create string
   end
@@ -46,4 +47,15 @@ class User < ActiveRecord::Base
   def last_updated_at
     updated_at.strftime "%h %d, %Y %l:%M %p"
   end
+
+  # def all_category_words(category_id)
+  #   word_ids = "SELECT word_id FROM lesson_words 
+  #               WHERE user_id = :user_id"
+  #   if category_id.blank?
+  #     Word.where "id IN (#{word_ids})", user_id: id
+  #   else
+  #     word_ids = "#{word_ids} AND category_id = :category_id"
+  #     Word.where "id IN (#{word_ids})", user_id: id, category_id: category_id
+  #   end
+  # end
 end

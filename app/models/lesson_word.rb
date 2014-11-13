@@ -1,5 +1,6 @@
 class LessonWord < ActiveRecord::Base
   belongs_to :lesson
   belongs_to :word
-  has_many :word_answers
+  belongs_to :word_answer
+  belongs_to :user
 end

@@ -1,0 +1,38 @@
+<div id="word_list">
+  <div class="span12 offset1">
+    <%= form_tag words_path, {method: :get} do %>
+      <div><span>Category</span>
+      <%= select_tag "category_id",
+          options_from_collection_for_select(Category.all, "id", "name",
+                                        selected: params[:category_id]),
+                                        { prompt: "Select Category" } %></div>
+      <div class="radio">
+        <%= radio_button_tag "learn", "learned", params[:learn] == "learned" %>
+        <span>Learned</span></div>
+      <div class="radio">
+        <%= radio_button_tag "learn", "not_learn", params[:learn] == "not_learn" %>
+        <span>Not Learn</span></div>
+      <div class="radio">
+        <%= radio_button_tag "learn", "all", params[:learn] == "all" || params[:learn].blank? %>
+        <span>All</span></div>
+      <div><%= submit_tag "Filter", class: "btn btn-primary", name: nil %></div>
+    <% end %>
+  </div>
+
+  <div class="span10 offset1">
+    <table class="table table-bordered">
+      <%= will_paginate @words %>
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Meaning</th>
+          <%= content_tag :th, "Settings" if admin? %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @words %>
+      </tbody>
+    </table>
+    <%= link_to "New Word", new_word_path, class: "btn" if admin? %>
+  </div>
+</div>

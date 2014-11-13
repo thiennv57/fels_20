@@ -11,6 +11,10 @@ module SessionsHelper
     end
   end
   
+  def admin?
+    current_user && current_user.admin?
+  end
+
   def user_signed_in?
     !current_user.nil?
   end
@@ -43,7 +47,7 @@ module SessionsHelper
   end
   
   def admin_auth
-    unless current_user.admin?
+    unless admin?
       flash[:error] = "Permission denied!"
       redirect_to root_path
     end
