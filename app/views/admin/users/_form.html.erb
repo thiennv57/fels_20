@@ -1,0 +1,19 @@
+<%= form_for [:admin, @user] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div><%= f.label :username %>
+  <%= f.text_field :username, autofocus: true %></div>
+  
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
+  
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+  
+  <div><%= f.label :password_confirmation, "Confirm" %>
+  <%= f.password_field :password_confirmation %></div>
+  
+  <div><%= f.label :avatar, "Choose your avatar" %>
+  <%= f.file_field :avatar %></div><br />
+  
+  <div><%= f.submit label, class: "btn btn-primary" %></div>
+<% end %>

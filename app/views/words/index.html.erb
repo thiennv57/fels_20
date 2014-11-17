@@ -20,7 +20,7 @@
   </div>
 
   <div class="span10 offset1">
-    <table class="table table-bordered">
+    <table class="table">
       <%= will_paginate @words %>
       <thead>
         <tr>
@@ -33,6 +33,6 @@
         <%= render @words %>
       </tbody>
     </table>
-    <%= link_to "New Word", new_word_path, class: "btn" if admin? %>
+    <%= link_to "New Word", new_admin_word_path, class: "btn" if admin? %>
   </div>
 </div>

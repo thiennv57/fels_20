@@ -1,8 +1,4 @@
 <tr>
   <td><%= word.content %></td>
   <td><%= word.word_answers.corrected.try(:content) %></td>
-  <% if admin? %>
-    <td><%= link_to "Edit", edit_word_path(word) %>
-    <%= link_to "Delete", word, data: {method: :delete}, confirm: "Are you sure?" %></td>
-  <% end %>
 </tr>

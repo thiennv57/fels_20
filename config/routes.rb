@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   root to: "statics#home"
   
-  resources :users
+  namespace :admin do
+    get "/" => "users#index"
+    resources :users
+    resources :categories
+    resources :words
+  end
+
+  resources :users, except: [:index, :destroy]
   get "sign_up" => "users#new", as: :sign_up
   
-  resources :categories, except: :show
+  resources :categories, only: [:index]
 
   resources :words, except: :show
 
