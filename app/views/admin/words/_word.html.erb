@@ -1,0 +1,7 @@
+<tr>
+  <td><%= word.id %></td>
+  <td><%= word.content %></td>
+  <td><%= word.word_answers.corrected.try(:content) %></td>
+  <td><%= link_to "Edit", edit_admin_word_path(word) %>
+  <%= link_to "Delete", admin_word_path(word), data: {method: :delete}, confirm: "Are you sure?" %></td>
+</tr>

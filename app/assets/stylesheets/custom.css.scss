@@ -117,6 +117,17 @@
   }
 }
 
+#categories {
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  label {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
 .field_with_errors {
   input {
     border-color: red; 
