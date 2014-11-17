@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).on("page:change", function(){
+  $(".next_lesson_word_btn").on("click", function(e){
+    $(this).parent().hide().next().next().show();
+    e.preventDefault();
+  });
+});
