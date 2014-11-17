@@ -17,8 +17,18 @@
 //= require_tree .
 
 $(document).on("page:change", function(){
+  // next button on lesson page
   $(".next_lesson_word_btn").on("click", function(e){
     $(this).parent().hide().next().next().show();
     e.preventDefault();
+  });
+
+  // show button on result page
+  $(".btn_hide").on("click", function(){
+    if ($(this).next().is(":visible") == true) {
+      $(this).text("Show").next().slideUp();
+    } else {
+      $(this).text("Hide").next().slideDown();
+    }
   });
 });
