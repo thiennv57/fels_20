@@ -8,6 +8,6 @@ class Category < ActiveRecord::Base
   scope :search, ->(name) { where("name LIKE ?", "%#{name}%") }
 
   def results
-    lessons.map { |lesson| lesson.result || 0 }.inject :+
+    lessons.map { |lesson| lesson.result || 0 }.inject(:+) || 0
   end
 end
