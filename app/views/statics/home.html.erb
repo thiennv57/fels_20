@@ -1,1 +1,9 @@
-<h1>Home Page</h1>
+<div id="home" class="row">
+  <div class="span4">
+    <div id="user">
+      <h2><%= link_to current_user.username, current_user %></h2>
+      <%= image_tag asset_path(current_user.avatar.url), alt: "Profile Image" %>
+    </div>
+  </div>
+  <%= render "shared/activities" %>
+</div>

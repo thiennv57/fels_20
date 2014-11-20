@@ -1,0 +1,13 @@
+<div id="activities" class="span7">
+  <h2>Activities</h2>
+  <%= will_paginate @lessons %>
+  <ul>
+    <% @lessons.each do |lesson| %>
+      <li>
+        <i class="icon-arrow-right"></i>
+        You have learned <b>( <%= pluralize(lesson.result, "word") %> )</b> from <b>
+          <%= lesson.category.name %></b>
+        </li>
+    <% end %>
+  </ul>
+</div>
