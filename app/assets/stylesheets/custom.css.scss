@@ -171,6 +171,21 @@
   }
 }
 
+#result {
+  .lesson {
+    clear: both;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+    div {
+      display: none;
+      table {
+        clear: both;
+      }
+    }
+  }
+}
+
 .field_with_errors {
   input {
     border-color: red; 

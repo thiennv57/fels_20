@@ -1,0 +1,39 @@
+<div class="row">
+  <div id="result" class="span8 offset2">
+    <% @lessons.each do |lesson| %>
+      <div class="lesson">
+        <h3><%= "Lesson #{lesson.id} Result" %> | 
+        (<%= "#{lesson.result}/#{lesson.lesson_words.count}" %>)</h3>
+        <button class="btn btn-default btn_hide">Show</button>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Correct</th>
+                <th>Original Word</th>
+                <th>Meaning</th>
+                <th>Your Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% lesson.lesson_words.each do |lesson_word| %>
+                <tr>
+                  <td>
+                    <% if lesson_word.word_answer.try(:correct?) %>
+                      <i class="icon-ok"></i>
+                    <% else %>
+                      <i class="icon-remove"></i>
+                    <% end %>
+                  </td>
+                  <td><%= lesson_word.word.content %></td>
+                  <td><%= lesson_word.word.word_answers.corrected.content %></td>
+                  <td><%= lesson_word.word_answer.try(:content) || "Blank" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
