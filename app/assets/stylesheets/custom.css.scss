@@ -55,6 +55,27 @@
   padding: 10px;
 }
 
+#home {
+  #user {
+    border-radius: 5px;
+    border: 3px solid #ddd;
+    h2 {
+      text-align: center;
+      text-transform: capitalize;
+      a {
+        color: #000;
+      }
+    }
+    img {
+      padding: 2% 2%;
+      width: 96%;
+      height: 150px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+  }
+}
+
 #error_messages {
   padding: 0;
   margin: 10px 0;
@@ -83,8 +104,32 @@
         margin-bottom: 5px;
         border-bottom: 1px solid #ddd;
         label {
+          font-size: 1.5em;
+          text-transform: capitalize;
           text-align: center;
         }
+      }
+    }
+  }
+}
+
+#activities {
+  border-radius: 5px;
+  border: 3px solid #ddd;
+  h2 {
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    margin-left: -5px;
+    li {
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee;
+      &:first-child {
+        border-top: 1px solid #eee;
+      }
+      i {
+        margin-right: 7px;
       }
     }
   }

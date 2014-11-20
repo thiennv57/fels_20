@@ -9,7 +9,8 @@
     <span><%= @user.email %></span></p>
     <p><label>Created at:</label>
     <span><%= @user.signed_up_at %></span></p>
-    <p><label>Updated at::</label>
+    <p><label>Updated at:</label>
     <span><%= @user.last_updated_at %></span></p>
   </div>
 </div>
+<%= render "shared/activities" %>

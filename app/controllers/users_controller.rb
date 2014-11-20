@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @lessons = current_user.lessons.paginate page: params[:page], per_page: 20
   end
   
   def edit
