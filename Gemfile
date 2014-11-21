@@ -16,6 +16,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '3.1.7'
 gem 'bcrypt-ruby', '3.0.0'
 gem 'carrierwave', '0.10.0'
+gem 'active_link_to'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

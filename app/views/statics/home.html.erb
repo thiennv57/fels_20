@@ -1,9 +1,17 @@
 <div id="home" class="row">
-  <div class="span4">
-    <div id="user">
-      <h2><%= link_to current_user.username, current_user %></h2>
-      <%= image_tag asset_path(current_user.avatar.url), alt: "Profile Image" %>
+  <% if user_signed_in? %>
+    <div class="span4">
+      <div id="user">
+        <h2><%= link_to current_user.username, current_user %></h2>
+        <%= image_tag asset_path(current_user.avatar.url), alt: "Profile Image" %>
+      </div>
     </div>
-  </div>
-  <%= render "shared/activities" %>
+    <%= render "shared/activities" %>
+  <% else %>
+    <div class="span10 offset1">
+      <h1>Welcome to E-Learning Application</h1>
+      <h3>Click <%= link_to "Here", new_user_path, class: "btn btn-large btn-primary" %>
+       to sign up</h3>
+    </div>
+  <% end %>
 </div>

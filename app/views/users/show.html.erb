@@ -2,7 +2,7 @@
   <div>
     <p>
       <%= image_tag asset_path(@user.avatar.url),
-          width: "100px", height: "130px", alt: "Profile Image" %>
+          width: "100px", height: "130px", alt: "Profile Image", class: "img-rounded" %>
       <label><%= @user.username %></label>
     </p>
     <p><label>Email:</label>

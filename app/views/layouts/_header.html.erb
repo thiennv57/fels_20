@@ -1,6 +1,6 @@
 <div class="row">
   <div id="top">
-    <%= image_tag asset_path("logo.png"), width: "150px", height: "100px",alt: "application logo", id: "logo" %>
+    <%= link_to (image_tag asset_path("logo.png"), width: "150px", height: "100px",alt: "application logo", id: "logo"), root_path %>
     <ul id="top-nav">
       <% if user_signed_in? %>
         <li><%= link_to current_user.username.capitalize, edit_user_path(current_user) %></li>
@@ -12,20 +12,20 @@
     </ul>
   </div>
   <div id="nav">
-    <div id="nav-inner">
+    <div class="nav nav-tabs">
       <% if user_signed_in? %>
         <% if admin? %>
-        <li><%= link_to "Home", admin_path %></li>
-        <li><%= link_to "Words", admin_words_path %></li>
-        <li><%= link_to "Category", admin_categories_path %></li>
-        <li><%= link_to "Users", admin_users_path %></li>
+        <%= active_link_to "Home", admin_path, active: :exclusive, wrap_tag: :li %>
+        <%= active_link_to "Words", admin_words_path, wrap_tag: :li %>
+        <%= active_link_to "Category", admin_categories_path, wrap_tag: :li %>
+        <%= active_link_to "Users", admin_users_path, wrap_tag: :li %>
         <% else %>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Word List", words_path %></li>
-        <li><%= link_to "Category", categories_path %></li>
-        <li><%= link_to "Lesson", lessons_path %></li>
-        <li><%= link_to "Result", results_path %></li>
-        <li><%= link_to "User Show", current_user %></li>
+        <%= active_link_to "Home", root_path, active: :exclusive,wrap_tag: :li %>
+        <%= active_link_to "Word List", words_path, wrap_tag: :li %>
+        <%= active_link_to "Category", categories_path, wrap_tag: :li %>
+        <%= active_link_to "Lesson", lessons_path, wrap_tag: :li %>
+        <%= active_link_to "Result", results_path, wrap_tag: :li %>
+        <%= active_link_to "User Show", current_user, wrap_tag: :li %>
         <% end %>
       <% end %>
     </div>
