@@ -18,6 +18,7 @@ class Admin::WordsController < ApplicationController
 
   def new
     @word = Word.new
+    4.times { @word.word_answers.build }
   end
 
   def create
@@ -55,6 +56,7 @@ class Admin::WordsController < ApplicationController
     end
 
     def word_param
-      params.require(:word).permit(:content, :category_id)
+      params.require(:word).permit(:content, :category_id,
+            word_answers_attributes: [:content, :correct])
     end
 end

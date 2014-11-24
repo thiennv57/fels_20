@@ -6,6 +6,17 @@
   <div><%= f.label :category %>
   <%= f.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: "Select Category"} %></div>
   
+  <div id="word_answers">
+    <h3>Word Answers</h3>
+    <%= f.fields_for :word_answers do |word_answer_form| %>
+      <div><%= word_answer_form.label :content %>
+      <%= word_answer_form.text_field :content %></div>
+
+      <div class="radio"><%= word_answer_form.radio_button :correct, true %>
+      <%= word_answer_form.label :correct %></div>
+    <% end %>
+  </div>
+
   <div><%= f.submit label, class: "btn btn-primary" %>
   <%= link_to "Cancel", words_path, class: "btn" %></div>
 <% end %>

@@ -1,7 +1,8 @@
 class Word < ActiveRecord::Base
   has_one :lesson_word
   belongs_to :category
-  has_many :word_answers
+  has_many :word_answers, inverse_of: :word
+  accepts_nested_attributes_for :word_answers
   
   validates_presence_of :content, :category_id
 
