@@ -18,8 +18,12 @@
 
 $(document).on("page:change", function(){
   // next button on lesson page
+  var lesson_words_count = 0;
   $(".next_lesson_word_btn").on("click", function(e){
+    lesson_words_count += 1;
+    var progress = (lesson_words_count / 20) * 100;
     $(this).parent().hide().next().next().show();
+    $(".bar").css({width: progress + "%"});
     e.preventDefault();
   });
 
