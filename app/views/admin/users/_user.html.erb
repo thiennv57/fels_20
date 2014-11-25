@@ -2,6 +2,7 @@
   <td><%= user.id %></td>
   <td><%= link_to user.username, admin_user_path(user) %></td>
   <td><%= user.email %></td>
+  <td><%= user.admin? ? "Admin" : "User" %></td>
   <td><%= user.signed_up_at %></td>
   <td><%= user.last_updated_at %></td>
   <td><%= link_to "Edit", edit_admin_user_path(user) %>

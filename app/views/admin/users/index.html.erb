@@ -1,3 +1,5 @@
+<% provide :title, "Admin | Users" %>
+
 <div id="word_list">
   <div class="span12 offset1">
     <%= form_tag admin_users_path, {method: :get} do %>
@@ -14,6 +16,7 @@
           <th>#</th>
           <th>Username</th>
           <th>Email</th>
+          <th>Role</th>
           <th>Created at</th>
           <th>Updated at</th>
           <th>Options</th>
