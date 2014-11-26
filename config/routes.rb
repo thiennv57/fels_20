@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: "statics#home"
+
+  get "about" => "statics#about", as: :about
+  get "contact" => "statics#contact", as: :contact
   
   namespace :admin do
     get "/" => "users#index"
