@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "contact" => "statics#contact", as: :contact
   
   namespace :admin do
-    get "/" => "users#index"
+    root to: "users#index"
     resources :users
     resources :categories
     resources :words

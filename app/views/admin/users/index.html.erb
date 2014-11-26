@@ -1,31 +1,30 @@
 <% provide :title, "Admin | Users" %>
 
 <div id="word_list">
-  <div class="span12 offset1">
-    <%= form_tag admin_users_path, {method: :get} do %>
-      <div><span>Name: </span><%= text_field_tag "name",
-            params[:name], placeholder: "Search", autofocus: true %></div>
-      <div><%= submit_tag "Search", class: "btn btn-primary", name: nil %></div>
-    <% end %>
-  </div>
-  <div class="span10 offset1">
-    <%= will_paginate @users %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Created at</th>
-          <th>Updated at</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @users %>
-      </tbody>
-    </table>
-    <%= link_to "New User", new_admin_user_path, class: "btn btn-meduim btn-primary" %>
+  <div class="row">
+    <div class="span12">
+      <%= form_tag admin_users_path, {method: :get} do %>
+        <div><span>Name: </span><%= text_field_tag "name",
+              params[:name], placeholder: "Search", autofocus: true %></div>
+        <div><%= submit_tag "Search", class: "btn btn-primary", name: nil %></div>
+      <% end %>
+      <%= will_paginate @users %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @users %>
+        </tbody>
+      </table>
+      <%= link_to "New User", new_admin_user_path, class: "btn btn-meduim btn-primary" %>
+    </div>
   </div>
 </div>
