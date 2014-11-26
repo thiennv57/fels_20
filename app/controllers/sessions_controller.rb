@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in user
       remember user
       flash[:success] = "You have signed in."
-      redirect_to admin? ? admin_path : root_path
+      redirect_back_or_to admin? ? admin_root_path : root_path
     else
       flash.now[:error] = "Wrong username or password!"
       render "new"

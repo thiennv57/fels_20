@@ -1,34 +1,33 @@
 <% provide :title, "Admin | Word" %>
 
 <div id="word_list">
-  <div class="span12 offset1">
-    <%= form_tag admin_words_path, {method: :get} do %>
-      <div><span>Category</span>
-      <%= select_tag "category_id",
-          options_from_collection_for_select(Category.all, "id", "name",
-                                        selected: params[:category_id]),
-                                        { prompt: "Select Category" } %></div>
-      <div><%= text_field_tag "content", params[:content],
-            placeholder: "Search", autofocus: true %></div>
-      <div><%= submit_tag "Search", class: "btn btn-primary", name: nil %></div>
-    <% end %>
-  </div>
-
-  <div class="span10 offset1">
-    <table class="table">
+  <div class="row">
+    <div class="span12">
+      <%= form_tag admin_words_path, {method: :get} do %>
+        <div><span>Category</span>
+        <%= select_tag "category_id",
+            options_from_collection_for_select(Category.all, "id", "name",
+                                          selected: params[:category_id]),
+                                          { prompt: "Select Category" } %></div>
+        <div><%= text_field_tag "content", params[:content],
+              placeholder: "Search", autofocus: true %></div>
+        <div><%= submit_tag "Search", class: "btn btn-primary", name: nil %></div>
+      <% end %>
       <%= will_paginate @words %>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Word</th>
-          <th>Meaning</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @words %>
-      </tbody>
-    </table>
-    <%= link_to "New Word", new_admin_word_path, class: "btn btn-medium btn-primary" if admin? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Word</th>
+            <th>Meaning</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @words %>
+        </tbody>
+      </table>
+      <%= link_to "New Word", new_admin_word_path, class: "btn btn-medium btn-primary" if admin? %>
+    </div>
   </div>
 </div>
