@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    sign_out
+    sign_out if user_signed_in?
     flash[:success] = "You have signed out."
-    redirect_to admin? ? admin_path : root_path
+    redirect_to root_path
   end
 end

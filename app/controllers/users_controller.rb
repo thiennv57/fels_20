@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :user_auth, except: [:new, :create]
   before_action :current_user_auth, only: [:show, :edit, :update]
   before_action :admin_auth, only: [:index, :destroy]
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @lessons = current_user.lessons.paginate page: params[:page], per_page: 20
+    @lessons = current_user.activities.paginate page: params[:page], per_page: 20
   end
   
   def edit
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     end
     
     def current_user_auth
-      unless current_user?(params[:id]) || current_user.admin?
+      unless current_user?(params[:id])
         flash[:error] = "Permission denied!"
         redirect_to root_path
       end

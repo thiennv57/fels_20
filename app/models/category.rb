@@ -1,13 +1,13 @@
 class Category < ActiveRecord::Base
   has_many :lessons, dependent: :destroy
-  has_many :words
+  has_many :words, dependent: :destroy
   
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  scope :search, ->(name) { where("name LIKE ?", "%#{name}%") }
+  scope :search, ->(name) { where "name LIKE ?", "%#{name}%" }
 
   def results
-    lessons.map { |lesson| lesson.result || 0 }.inject(:+) || 0
+    lessons.map(&:result).inject(:+) || 0
   end
 end

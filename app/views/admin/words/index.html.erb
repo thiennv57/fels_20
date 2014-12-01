@@ -3,7 +3,7 @@
 <div id="word_list">
   <div class="row">
     <div class="span12">
-      <%= form_tag admin_words_path, {method: :get} do %>
+      <%= form_tag admin_words_path, { method: :get } do %>
         <div><span>Category</span>
         <%= select_tag "category_id",
             options_from_collection_for_select(Category.all, "id", "name",

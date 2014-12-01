@@ -4,7 +4,8 @@
   <%= f.text_field :content, autofocus: true %></div>
   
   <div><%= f.label :category %>
-  <%= f.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: "Select Category"} %></div>
+  <%= f.select :category_id, Category.all.map { |category| [category.name, category.id] },
+        {prompt: "Select Category"} %></div>
   
   <div id="word_answers">
     <h3>Word Answers</h3>

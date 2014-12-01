@@ -6,6 +6,10 @@ class Lesson < ActiveRecord::Base
 
   before_save :update_result
 
+  def last_updated_at
+    updated_at.strftime "%h %d, %Y"
+  end
+
   private
 
     def update_result
