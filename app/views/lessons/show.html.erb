@@ -11,7 +11,7 @@
         <div id="lesson_word_<%= lesson_word_field.object.id %>">
           <h4><%= lesson_word_field.object.word.content %></h4>
           <% lesson_word_field.object.word.word_answers.each do |word_answer| %>
-            <%= lesson_word_field.radio_button :word_answer_id, word_answer.id || 1 %>
+            <%= lesson_word_field.radio_button :word_answer_id, word_answer.id %>
             <span><%= word_answer.content %></span><br />
           <% end %><br />
           <button class="btn btn-default next_lesson_word_btn">Next</button>

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   
   before_save -> { self.email.downcase! }
+  before_destroy -> { remove_avatar! }
   
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
 
-  scope :search, ->(name) { where("username LIKE ?", "%#{name}%") }
+  scope :search, ->(name) { where "username LIKE ?", "%#{name}%" }
 
   def self.digest(string)
     BCrypt::Password.create string
@@ -48,5 +49,9 @@ class User < ActiveRecord::Base
   
   def last_updated_at
     updated_at.strftime "%h %d, %Y %l:%M %p"
+  end
+
+  def activities
+    lessons.order "updated_at DESC"
   end
 end

@@ -4,10 +4,12 @@
   <ul>
     <% @lessons.each do |lesson| %>
       <li>
-        <i class="icon-arrow-right"></i>
-        You have learned <b>( <%= pluralize(lesson.result, "word") %> )</b> from <b>
-          <%= lesson.category.name %></b>
-        </li>
+        <% if lesson.result != 0 %>
+          <i class="icon-arrow-right"></i>
+          You have learned <b>( <%= pluralize(lesson.result, "word") %> )</b> from <b>
+            <%= lesson.category.name %></b> on <b><%= lesson.last_updated_at %></b>
+          </li>
+        <% end %>
     <% end %>
   </ul>
 </div>

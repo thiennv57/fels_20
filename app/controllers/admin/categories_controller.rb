@@ -17,7 +17,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new category_param
     if @category.save
       flash[:success] = "A new category has been added."
-      redirect_to categories_path
+      redirect_to admin_categories_path
     else
       render "new"
     end
@@ -29,7 +29,7 @@ class Admin::CategoriesController < ApplicationController
   def update
     if @category.update_attributes category_param
       flash[:success] = "Update successfull."
-      redirect_to categories_path
+      redirect_to admin_categories_path
     else
       render "edit"
     end
@@ -38,7 +38,7 @@ class Admin::CategoriesController < ApplicationController
   def destroy
     @category.destroy
     flash[:success] = "A category has been deleted."
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
 
   private
